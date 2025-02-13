@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>agga international</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+
+
+    <script>
+        let currentAudio = null; // To store the currently playing audio element
+      let currentButton = null; // To store the currently active button
+      
+      // Function to toggle play/pause when a play button is clicked
+      function togglePlay(songPath, button) {
+          // If there's already a song playing, stop it
+          if (currentAudio && currentAudio !== songPath) {
+              currentAudio.pause();
+              currentButton.innerHTML = "&#9654;"; // Reset the button to play symbol
+          }
+      
+          // If the song is already playing, pause it
+       if (currentAudio && currentAudio.src === songPath && !currentAudio.paused) {
+              currentAudio.pause();
+              button.innerHTML = "&#9654;"; // Reset the button to play symbol
+          } else {
+              // Play the selected song
+              currentAudio = new Audio(songPath);
+              currentAudio.play();
+              button.innerHTML = "&#10074;&#10074;"; // Change the button to a pause symbol
+      
+              // Set the currentButton to this button to track the current song
+              if (currentButton !== null) {
+                  currentButton.innerHTML = "&#9654;"; // Reset the previous button
+              }
+              currentButton = button;
+          }
+      }
+      
+      // Function to handle downloading
+      function downloadSong(songFilePath) {
+          // Create an invisible download link and trigger the download
+          const link = document.createElement("a");
+          link.href = songFilePath;
+          link.download = songFilePath.split("/").pop(); // Name the file after the song's name
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+      }
+        </script>
+
+            <!-- header -->
+    <header class="header">
+        <div class="top-header">
+            <div class="logo">
+                <img src="/img/icon/uganda eastern music.png" alt="" class="logo-image">
+            </div>
+            <div class="container">
+                <input type="text" id="search" placeholder="Search Music or artist">
+                <button id="search-btn">Search</button>
+                <ul id="result-list"></ul>
+            </div>
+        </div>
+        <nav>
+            <div class="hamburger-menu" id="hamburger-icon">
+                &#9776;
+            </div>
+            <ul class="menu" id="menu-list">
+                <li class="menu-item dropdown">
+                    <a href="#">Home <span style="font-size: 14px;">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/index.html">Top 10 Artists</a></li>
+                        <li><a href="#">Trending</a></li>
+                        <li><a href="#">Awards</a></li>
+                        <li><a href="#">Collaborations</a></li>
+                        <li><a href="#">Nominations</a></li>
+                        <li><a href="#">All Artists</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item dropdown">
+                    <a href="#">Genre <span style="font-size: 14px;">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Hip Hop</a></li>
+                        <li><a href="#">Reggea</a></li>
+                        <li><a href="#">Religious</a></li>
+                        <li><a href="#">Dance Hall</a></li>
+                        <li><a href="#">Cultural</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="#">Events</a>
+                </li>
+                <li class="menu-item">
+                    <a href="#">Download Music</a>
+                </li>
+                <li class="menu-item">
+                    <a href="#">Videos</a>
+                </li>
+                <li class="menu-item">
+                    <a href="#">Hangspots</a>
+                </li>
+                <li class="menu-item">
+                    <a href="#">News</a>
+                </li>
+                <li class="menu-item">
+                    <a href="#contact-us">Contact Us</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- end header -->
+     <br><br><br><br><br>
+
+
+
+
+    <div>
+        <section class="about-artist">
+            <div class="about-artist-box">
+                <div class="about-artist-image">
+                    <img src="/img/artist/agga international.jpg" alt="">
+                    <div class="about-artist-details">
+                        <div>
+                            <p>
+                                Agga International <br> <span class="about-artist-genre">Dancehall ARtist</span><br>
+                                <span class="about-artist-followers">340 Followers</span> <a href="#"></a><span class="about-artist-share">Share</span></a> <a href="#"><span class="about-artist-like">Like</span></a><a href="#"><span class="about-artist-like">Follow</span></a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="about-artist-popup">
+                        <div class="about-artist-likes">
+                            <p class="about-artist-likes-views-songs">
+                                <span style="color: #fff;" class="likes-for-artist-number">270</span> <span style="color: orange; font-size: 14px;" class="likes-for-artist likes-space-right"> likes</span>
+                                <span style="color: #fff;" class="likes-for-artist-number">42</span> <span style="color: orange; font-size: 14px;" class="likes-for-artist likes-space-right">views</span>
+                                <span style="color: #fff;" class="likes-for-artist-number">42</span> <span style="color: orange; font-size: 14px;" class="likes-for-artist">Songs</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+    <div class="all-artist-songs">
+        <section class="artist-songs">
+            <div class="artist-whereabouts">      
+                <p><b>Age:</b> <span>Unrevealed</span></p>
+                <p><b>Nationality:</b> <span>Ugandan</span> </p>
+                <p><b>Status:</b> <span>Unrevealed</span></p>
+                <p><b>Place Of Residence:</b> <span>Budaka</span> </p>
+            </div>
+        <div>    
+    </div>
+
+    <!-- Play Lyrics -->
+        <!-- Hidden content that will pop-up -->
+        <div id="popupContent" class="popup">
+        <div class="music-player">
+          <div class="song-info">
+              <h2 id="song-title">I am me</h2>
+              <p id="artist-name">Alien Skin</p>
+          </div>
+  
+          <div class="audio-player">
+              <audio id="audio-player" controls>
+                  <source src="/songs/Ayra-Starr-Commas.mp3" type="audio/mp3">
+                  Your browser does not support the audio element.
+              </audio>
+          </div>
+  
+          <div class="lyrics-container">
+              <h3>Lyrics</h3>
+              <div id="lyrics" class="lyrics">
+                  <!-- Lyrics will be dynamically loaded here -->
+              </div>
+          </div>
+               <button id="closeButton">Close</button>
+               <button id="downloadLyricsButton">Download Lyrics</button>
+           </div>
+        </div>
+  
+
+
+
+
+
+
+
+            <div class="container">
+                <!-- Buttons -->
+            <div class="artist-songs-menu">
+                <button id="playlistButton" style="border-right: 3px solid #2a4b8a;">Playlist</button>
+                <button id="albumsButton" style="border-right: 3px solid #2a4b8a;">Albums</button>
+                <button id="videosButton" >Videos</button>
+            </div>
+                    
+                    <!-- Content Sections -->
+                    <div id="content" class="all-artist-playlist">
+                        <div id="playlistContent" class="content-section">
+                            <div id="playlist">
+                                <h2>Available Songs <span style="color: #0000007e;">(42)</span></h2>
+                                <ul id="songList">
+                                    <div class="all-playlist">
+                                        <li>
+                                            <div class="song-info">
+                                                <span><b>1.</b></span>
+                                                <button class="play-btn" onclick="togglePlay('/songs/Ayra-Starr-Commas.mp3', this)">▶</button>
+                                                <span>Munjioo</span>
+                                            </div>
+                                            <div class="download-and-duration">
+                                                <span class="duration">3:12</span>
+                                                <button onclick="downloadSong('/songs/Ayra-Starr-Commas.mp3')">&dArr;</button>
+                                                <button id="popupButton" style="font-size: 12px; padding: .4rem;">Play Lyrics</button>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="song-info">
+                                                <span><b>2.</b></span>
+                                                <button class="play-btn" onclick="togglePlay('/storage/emulated/0/Music/Fik_Fameica_-_Rolex_Official_Music_Video_(0).m4a', this)">▶</button>
+                                                <span>Song 2</span>
+                                            </div>
+                                            <div class="download-and-duration">
+                                                <span class="duration">3:12</span>
+                                                <button onclick="downloadSong('/songs/Ayra-Starr-Commas.mp3')">&dArr;</button>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="song-info">
+                                                <span><b>3.</b></span>
+                                                <button class="play-btn" onclick="togglePlay('/storage/emulated/0/Music/Fik_Fameica_-_Rolex_Official_Music_Video_(0).m4a', this)">▶</button>
+                                                <span>Song 3</span>
+                                            </div>
+                                            <div class="download-and-duration">
+                                                <span class="duration">3:12</span>
+                                                <button onclick="downloadSong('/songs/Ayra-Starr-Commas.mp3')">&dArr;</button>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="song-info">
+                                                <span><b>4.</b></span>
+                                                <button class="play-btn" onclick="togglePlay('songs/Ayra-Starr-Commas.mp3', this)">▶</button>
+                                                <span>Song 3</span>
+                                            </div>
+                                            <div class="download-and-duration">
+                                                <span class="duration">3:12</span>
+                                                <button onclick="downloadSong('/songs/Ayra-Starr-Commas.mp3')">&dArr;</button>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="song-info">
+                                                <span><b>5.</b></span>
+                                                <button class="play-btn" onclick="togglePlay('/storage/emulated/0/Music/Fik_Fameica_-_Rolex_Official_Music_Video_(0).m4a', this)">▶</button>
+                                                <span>Song 3</span>
+                                            </div>
+                                            <div class="download-and-duration">
+                                                <span class="duration">3:12</span>
+                                                <button onclick="downloadSong('/songs/Ayra-Starr-Commas.mp3')">&dArr;</button>
+                                            </div>
+                                        </li>
+                                    </div>
+                                    <div class="all-playlist">
+                                        <li>
+                                            <div class="song-info">
+                                                <span><b>6.</b></span>
+                                                <button class="play-btn" onclick="togglePlay('/storage/emulated/0/Music/Fik_Fameica_-_Rolex_Official_Music_Video_(0).m4a', this)">▶</button>
+                                                <span>Song 3</span>
+                                            </div>
+                                            <div class="download-and-duration">
+                                                <span class="duration">3:12</span>
+                                                <button onclick="downloadSong('/songs/Ayra-Starr-Commas.mp3')">&dArr;</button>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="song-info">
+                                                <span><b>7.</b></span>
+                                                <button class="play-btn" onclick="togglePlay('/storage/emulated/0/Music/Fik_Fameica_-_Rolex_Official_Music_Video_(0).m4a', this)">▶</button>
+                                                <span>Song 3</span>
+                                            </div>
+                                            <div class="download-and-duration">
+                                                <span class="duration">3:12</span>
+                                                <button onclick="downloadSong('/songs/Ayra-Starr-Commas.mp3')">&dArr;</button>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="song-info">
+                                                <span><b>8.</b></span>
+                                                <button class="play-btn" onclick="togglePlay('/storage/emulated/0/Music/Fik_Fameica_-_Rolex_Official_Music_Video_(0).m4a', this)">▶</button>
+                                                <span>Song 3</span>
+                                            </div>
+                                            <div class="download-and-duration">
+                                                <span class="duration">3:12</span>
+                                                <button onclick="downloadSong('/songs/Ayra-Starr-Commas.mp3')">&dArr;</button>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="song-info">
+                                                <span><b>9.</b></span>
+                                                <button class="play-btn" onclick="togglePlay('/storage/emulated/0/Music/Fik_Fameica_-_Rolex_Official_Music_Video_(0).m4a', this)">▶</button>
+                                                <span>Song 3</span>
+                                            </div>
+                                            <div class="download-and-duration">
+                                                <span class="duration">3:12</span>
+                                                <button onclick="downloadSong('/songs/Ayra-Starr-Commas.mp3')">&dArr;</button>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="song-info">
+                                                <span><b>10.</b></span>
+                                                <button class="play-btn" onclick="togglePlay('/storage/emulated/0/Music/Fik_Fameica_-_Rolex_Official_Music_Video_(0).m4a', this)">▶</button>
+                                                <span>Song 3</span>
+                                            </div>
+                                            <div class="download-and-duration">
+                                                <span class="duration">3:12</span>
+                                                <button onclick="downloadSong('/songs/Ayra-Starr-Commas.mp3')">&dArr;</button>
+                                            </div>
+                                        </li>
+                                    </div>
+                                </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div id="albumsContent" class="artist">
+                            <h2 class="h2-title">Available Albums <span style="color: #0000007e;">(10)</span></h2>
+                            <div class="box-container">
+                                <div class="artist-box">
+                                    <div class="image">
+                                        <img src="/img/artist/agga international.jpg" alt="">
+                                        <div class="likes-and-views">
+                                            <p>
+                                                <span style="color: #fff;">200</span> <span style="color: orange;"> 
+                                                    <svg class="bi" width="35" height="20"><use xlink:href="#like"/></svg>
+                                                </span>
+                                                <span style="color: #fff;">20</span> <span style="color: orange;">views</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="content">
+                                        <h3>Agga International</h3>
+                                    </div>
+                                </div>
+                    
+                                <div class="artist-box">
+                                    <div class="image">
+                                        <img src="/img/artist/bap g.jpg" alt="">
+                                        <div class="likes-and-views">
+                                            <p>
+                                                <span style="color: #fff;">130</span> <span style="color: orange;"> likes</span>
+                                                <span style="color: #fff;">16</span> <span style="color: orange;">views</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="content">
+                                        <h3>Bap G</h3>
+                                    </div>
+                                </div>
+                    
+                                <div class="artist-box">
+                                    <div class="image">
+                                        <img src="/img/artist/urban chief.jpg" alt="">
+                                        <div class="likes-and-views">
+                                            <p>
+                                                <span style="color: #fff;">461</span> <span style="color: orange;"> likes</span>
+                                                <span style="color: #fff;">80</span> <span style="color: orange;">views</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="content">
+                                        <h3>Urban Chief</h3>
+                                    </div>
+                                </div>
+                    
+                                <div class="artist-box">
+                                    <div class="image">
+                                        <img src="/img/artist/wizmo.jpg" alt="">
+                                        <div class="likes-and-views">
+                                            <p>
+                                                <span style="color: #fff;">502</span> <span style="color: orange;"> likes</span>
+                                                <span style="color: #fff;">66</span> <span style="color: orange;">views</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="content">
+                                        <h3>Wizmo Kazikuba</h3>
+                                    </div>
+                                </div>
+                    
+                                <div class="artist-box">
+                                    <div class="image">
+                                        <img src="/img/artist/sasha powerz.jpg" alt="">
+                                        <div class="likes-and-views">
+                                            <p>
+                                                <span style="color: #fff;">176</span> <span style="color: orange;"> likes</span>
+                                                <span style="color: #fff;">19</span> <span style="color: orange;">views</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="content">
+                                        <h3>Sasha Powerz</h3>
+                                    </div>
+                                </div>
+                    
+                                <div class="artist-box">
+                                    <div class="image">
+                                        <img src="/img/artist/shine stars.jpg" alt="">
+                                        <div class="likes-and-views">
+                                            <p>
+                                                <span style="color: #fff;">304</span> <span style="color: orange;"> likes</span>
+                                                <span style="color: #fff;">76</span> <span style="color: orange;">views</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="content">
+                                        <h3>Shine Stars</h3>
+                                    </div>
+                                </div>
+                
+                                <div class="artist-box">
+                                    <div class="image">
+                                        <img src="/img/artist/Taliba grace.jpg" alt="">
+                                        <div class="likes-and-views">
+                                            <p>
+                                                <span style="color: #fff;">280</span> <span style="color: orange;"> likes</span>
+                                                <span style="color: #fff;">47</span> <span style="color: orange;">views</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="content">
+                                        <h3>Taliba Grace</h3>
+                                    </div>
+                                </div>
+                
+                                <div class="artist-box">
+                                    <div class="image">
+                                        <img src="/img/artist/fireboy ug.jpg" alt="">
+                                        <div class="likes-and-views">
+                                            <p>
+                                                <span style="color: #fff;">170</span> <span style="color: orange;"> likes</span>
+                                                <span style="color: #fff;">19</span> <span style="color: orange;">views</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="content">
+                                        <h3>Fireboy Ug</h3>
+                                    </div>
+                                </div>
+                
+                                <div class="artist-box">
+                                    <div class="image">
+                                        <img src="/img/artist/promoter wikid.jpg" alt="">
+                                        <div class="likes-and-views">
+                                            <p>
+                                                <span style="color: #fff;">270</span> <span style="color: orange;"> likes</span>
+                                                <span style="color: #fff;">42</span> <span style="color: orange;">views</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="content">
+                                        <h3>Promoter Wikid</h3>
+                                    </div>
+                                </div>
+                
+                                <div class="artist-box">
+                                    <div class="image">
+                                        <img src="/img/artist/robin vybz.jpg" alt="">
+                                        <div class="likes-and-views">
+                                            <p>
+                                                <span style="color: #fff;">140</span> <span style="color: orange;"> likes</span>
+                                                <span style="color: #fff;">14</span> <span style="color: orange;">views</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="content">
+                                        <h3>Robin Vybz</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      <div id="videosContent" class="trending-news">
+                        <h2 class="h2-title">Available Videos <span style="color: #0000007e;">(5)</span></h2>
+                    <div class="trending-box-container">
+                        <div class="trending-box">
+                            <div class="artist-video">
+                                <video src="/videos/Asake_-_Organise__Official_Video_(720p).mp4" width="100%" height="200" preload="" controls="" loop=""> <p>SnowSteelDoorsAndWindows</p></video>
+                            </div>
+                            <div class="trending-content">
+                                <h5>
+                                    Organize by Asake
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="trending-box">
+                            <div class="artist-video">
+                                <video src="/videos/Asake_-_Organise__Official_Video_(720p).mp4" width="100%" height="200" preload="" controls="" loop=""> <p>SnowSteelDoorsAndWindows</p></video>
+                            </div>
+                            <div class="trending-content">
+                                <h5>
+                                    Organize by Asake
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="trending-box">
+                            <div class="artist-video">
+                                <video src="/videos/Asake_-_Organise__Official_Video_(720p).mp4" width="100%" height="200" preload="" controls="" loop=""> <p>SnowSteelDoorsAndWindows</p></video>
+                            </div>
+                            <div class="trending-content">
+                                <h5>
+                                    Organize by Asake
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="trending-box">
+                            <div class="artist-video">
+                                <video src="/videos/Asake_-_Organise__Official_Video_(720p).mp4" width="100%" height="200" preload="" controls="" loop=""> <p>SnowSteelDoorsAndWindows</p></video>
+                            </div>
+                            <div class="trending-content">
+                                <h5>
+                                    Organize by Asake
+                                </h5>
+                            </div>
+                        </div>
+
+                            <div class="trending-box">
+                                <div class="artist-video">
+                                    <video src="/videos/Asake_-_Organise__Official_Video_(720p).mp4" width="100%" height="200" preload="" controls="" loop=""> <p>SnowSteelDoorsAndWindows</p></video>
+                                </div>
+                                <div class="trending-content">
+                                    <h5>
+                                        Organize by Asake
+                                    </h5>
+                                </div>
+                            </div>
+
+                    </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+
+
+                <!-- Sliding image -->
+                <section>
+                    <div class="carousel-container">
+                        <div class="carousel">
+                            <div class="slide">
+                                <img src="/img/concert/bagwere tour students association.jpg" alt="">
+                                <div class="caption">Bagwere Tour</div>
+                            </div>
+                            <div class="slide">
+                                <img src="/img/artist/wizmo.jpg" alt="">
+                                <div class="caption">Wizmo Kazikuba</div>
+                            </div>
+                            <div class="slide">
+                                <img src="/img/artist/bap g.jpg" alt="">
+                                <div class="caption">TBap G</div>
+                            </div>
+                             <div class="slide">
+                                <img src="/img/artist/promoter wikid.jpg" alt="">
+                                <div class="caption">Promoter Wikid</div>
+                            </div>
+                             <div class="slide">
+                                <img src="/img/artist/robin vybz.jpg" alt="">
+                                <div class="caption">Robin Vybz</div>
+                            </div>
+                        </div>
+                        <!-- Navigation buttons -->
+                        <button class="prev" onclick="moveSlide(-1)" title="previous">&#10094;</button>
+                        <button class="next" onclick="moveSlide(1)" title="next">&#10095;</button>
+                    </div>
+                    
+                 </section>
+
+
+
+                        <!-- Our partners starts -->
+                        <section class="partners-section">
+                            <div class="container">
+                                <h2>Our Partners</h2>
+                                <div class="partners-list">
+                                    <div class="partner">
+                                        <img src="/img/artist/Taliba grace.jpg" alt="Partner 1">
+                                        <p>Partner 1</p>
+                                    </div>
+                                    <div class="partner">
+                                        <img src="/img/artist/sada vadio.jpg" alt="Partner 2">
+                                        <p>Partner 2</p>
+                                    </div>
+                                    <div class="partner">
+                                        <img src="/img/artist/robin vybz.jpg" alt="Partner 3">
+                                        <p>Partner 3</p>
+                                    </div>
+                                    <div class="partner">
+                                        <img src="/img/artist/shine stars.jpg" alt="Partner 4">
+                                        <p>Partner 4</p>
+                                    </div>
+                                     <div class="partner">
+                                        <img src="/img/artist/promoter wikid.jpg" alt="Partner 4">
+                                        <p>Partner 4</p>
+                                    </div>
+                                     <div class="partner">
+                                        <img src="/img/artist/fireboy ug.jpg" alt="Partner 4">
+                                        <p>Partner 4</p>
+                                    </div>
+                                     <div class="partner">
+                                        <img src="/img/artist/bap g.jpg" alt="Partner 4">
+                                        <p>Partner 4</p>
+                                    </div>
+                                     <div class="partner">
+                                        <img src="/img/artist/agga international.jpg" alt="Partner 4">
+                                        <p>Partner 4</p>
+                                    </div>
+                                    <!-- Add more partners as needed -->
+                                </div>
+                            </div>
+                        </section>
+
+
+                                <!-- Terms & Conditions -->
+        <section>
+            <div class="terms-and-conditions">
+                <h1>Terms And Conditions</h1>
+            </div>
+                 <div class="row">
+        <div class="col-md-4 terms-content">
+          <h3>Your content in our services</h3>
+          <p>
+             distinctio optio amet tempora quos repellat nulla molestias aliquid ipsum ex aut est illum fuga eaque temporibus inventore. Explicabo, dolorum veritatis.
+            Omnis inventore id error odio voluptatum nihil eius a officia earum cumque inventore architecto iure. Nisi doloremque, veritatis praesentium ea inventore officia alias nostrum rerum architecto exercitationem.
+            Necessitatibus illum sint dicta cum. Ad necessitatibus quam voluptatum fuga. Aliquam quis beatae atque assumenda fuga? Quis amet, odio saepe, dicta enim voluptatem harum minima illo sapiente odit, eaque alias.
+            Eligendi possimus fuga nostrum! Facere ullam voluptatem, suscipit iste numquam architecto. Libero assumenda et consequatur exercitationem corrupti iusto, labore laboriosam cumque velit repellat ducimus explicabo, perspiciatis eveniet aliquam!
+          </p>
+       </div>
+        <div class="col-md-4 terms-content">
+          <h3>Google AdSense Policy <br> Adherence Clause for Eastern Uganda Music Store Users</h3>
+          <p>
+            Lorem ipsum dolot veritatis libero praesentium porro voluptates,sit cupiditate quod quidem facere sed tenetur quasi vel similique eius natus nostrum et labore cum sint consequuntur perspiciatis dolorum ipsa? Ipsa.
+            Accusantium earum modi voluptatum iste fuga dolore quasi voluptatibus quis? Atque doloremque doloribus, iusto eos consequatur consequuntur officiis culpa laboriosam. At mollitia ex minima exercitationem dolorem, a fugiat dolore veritatis?
+            Voluptatum incidunt accusamus eos ratione quam inventore impedit reiciendis consectetur porro? Iste quam animi aliquid expedita sunt officiis soluta, perferendis accusantium, ex, maxime quo quos similique quidem fugit vel nisi.
+            Unde quibusdam architecto id facere nam ea illo placeat eaque expedita <br>maxime consectetur tenetur enim reprehenderit, officia explicabo soluta nobis et? Provident ducimus esse dignissimos aut atque quisquam debitis! Nostrum.
+            Eveniet repudiandae laudantium explicabo aliquid facilis voluptate omnis doloribus voluptas deleniti, praesentium iusto sint ducimus ex unde nihil rerum aperiam. Fugiat, est dolor. Minus, magni repellat iure quam cupiditate in!
+          </p>
+        </div>
+        <div class="col-md-4 terms-content">
+          <h3>Using Our Services</h3>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+        </div>
+        <div class="col-md-4 terms-content">
+          <h3>Pay Attention</h3>
+          <p>
+            Our services are very diverse some times additional terms or product requirements may apply. <br>
+            Additional terms will be available with the relevant services, and those additional terms become
+            part of your agreement with us if you use.
+          </p>
+       </div>
+      </div>
+    </section>
+
+
+                                        <!-- FOOTER STARTS -->
+                <hr>
+                <section>
+                  <div class="footer-content">
+                    <div class="col-xs-6">
+                      <div class="col-sm-3">
+                        <h4>Explore</h4>
+                        <p><a href="#">New Songs</a></p>
+                        <p><a href="#">Trending Songs</a></p>
+                        <p><a href="#">Videos</a></p>
+                        <p><a href="#">Artists</a></p>
+                      </div>
+                      <div class="col-sm-3">
+                        <h4>Users</h4>
+                        <p><a href="#">Download Music</a></p>
+                        <p><a href="#">Sign Up/Login</a></p>
+                        <p><a href="#">Help Center</a></p>
+                        <p><a href="#">FAQs</a></p>
+                        <p><a href="#">About Us</a></p>
+                      </div>
+                    </div>
+                    <div class="col-xs-6">
+                      <div class="col-sm-3">
+                        <h4>Company</h4>
+                        <p><a href="#">About</a></p>
+                        <p><a href="#">Contact</a></p>
+                        <p><a href="#">Advertising</a></p>
+                        <p><a href="#">News</a></p>
+                      </div>
+                      <div class="col-sm-3">
+                        <h4>Company</h4>
+                        <p><a href="#">About</a></p>
+                        <p><a href="#">Contact</a></p>
+                        <p><a href="#">Advertising</a></p>
+                        <p><a href="#">News</a></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="page">
+                    <ul class="d-flex pager">
+                      <ul><li style="text-align: center;">You can reach us on our platform handles here<b> :</b></li></ul><br>
+                      <li title="contact us on X" class="ms-3"><a class="link-body-emphasis social-link" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg></a></li>
+                      <li title="contact us on instagram" class="ms-3"><a class="link-body-emphasis social-link" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
+                      <li title="contact us on facebook" class="ms-3"><a class="link-body-emphasis social-link" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
+                      <li title="watch us on tiktok" class="ms-3"><a class="link-body-emphasis social-link" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#tiktok"/></svg></a></li>
+                    </ul>
+                  </div>
+                  <footer style="text-align: center;">
+                    <p>&copy; 2025 All Rights Reserved At Eastern Uganda Music Store</p>
+                  </footer>
+                </section><br><br><br><br>
+
+
+        <!-- SVG -->
+        <svg class="d-none" style="display: none;">
+            <symbol id="facebook" viewBox="0 0 16 16">
+              <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+            </symbol>
+            <symbol id="instagram" viewBox="0 0 16 16">
+                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+            </symbol>
+            <symbol id="tiktok" viewBox="0 0 16 16">
+                <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z"></path>
+            </symbol>
+            <symbol id="twitter" viewBox="0 0 16 16">
+                <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"></path>
+            </symbol>
+            <symbol viewBox="0 0 16 16">
+                <path class="share-path" d="M339.588,314.529c-14.215,0-27.456,4.133-38.621,11.239l-112.682-78.67c1.809-6.315,2.798-12.976,2.798-19.871    c0-6.896-0.989-13.557-2.798-19.871l109.64-76.547c11.764,8.356,26.133,13.286,41.662,13.286c39.79,0,72.047-32.257,72.047-72.047    C411.634,32.258,379.378,0,339.588,0c-39.79,0-72.047,32.257-72.047,72.047c0,5.255,0.578,10.373,1.646,15.308l-112.424,78.491    c-10.974-6.759-23.892-10.666-37.727-10.666c-39.79,0-72.047,32.257-72.047,72.047s32.256,72.047,72.047,72.047    c13.834,0,26.753-3.907,37.727-10.666l113.292,79.097c-1.629,6.017-2.514,12.34-2.514,18.872c0,39.79,32.257,72.047,72.047,72.047    c39.79,0,72.047-32.257,72.047-72.047C411.635,346.787,379.378,314.529,339.588,314.529z"/>
+            </symbol>
+            <symbol  viewBox="0 0 16 16">
+                <path class="share-path"  d="M339.588,314.529c-14.215,0-27.456,4.133-38.621,11.239l-112.682-78.67c1.809-6.315,2.798-12.976,2.798-19.871    c0-6.896-0.989-13.557-2.798-19.871l109.64-76.547c11.764,8.356,26.133,13.286,41.662,13.286c39.79,0,72.047-32.257,72.047-72.047    C411.634,32.258,379.378,0,339.588,0c-39.79,0-72.047,32.257-72.047,72.047c0,5.255,0.578,10.373,1.646,15.308l-112.424,78.491    c-10.974-6.759-23.892-10.666-37.727-10.666c-39.79,0-72.047,32.257-72.047,72.047s32.256,72.047,72.047,72.047    c13.834,0,26.753-3.907,37.727-10.666l113.292,79.097c-1.629,6.017-2.514,12.34-2.514,18.872c0,39.79,32.257,72.047,72.047,72.047    c39.79,0,72.047-32.257,72.047-72.047C411.635,346.787,379.378,314.529,339.588,314.529z"/>
+            </symbol>
+
+        </svg>
+            
+                <script>
+
+
+
+
+
+
+
+              // Get all buttons
+            const playlistButton = document.getElementById('playlistButton');
+            const albumsButton = document.getElementById('albumsButton');
+            const videosButton = document.getElementById('videosButton');
+            
+            // Get all content sections
+            const playlistContent = document.getElementById('playlistContent');
+            const albumsContent = document.getElementById('albumsContent');
+            const videosContent = document.getElementById('videosContent');
+            
+            // Function to hide all sections
+            function hideAllSections() {
+                playlistContent.style.display = 'none';
+                albumsContent.style.display = 'none';
+                videosContent.style.display = 'none';
+            }
+            
+            // Display the playlist section by default
+            playlistContent.style.display = 'block'; // Show playlist content by default
+            
+            // Event listeners for the buttons
+            playlistButton.addEventListener('click', function() {
+                hideAllSections(); // Hide all sections first
+                playlistContent.style.display = 'block'; // Show playlist section
+            });
+            
+            albumsButton.addEventListener('click', function() {
+                hideAllSections();
+                albumsContent.style.display = 'block'; // Show albums section
+            });
+            
+            videosButton.addEventListener('click', function() {
+                hideAllSections();
+                videosContent.style.display = 'block'; // Show videos section
+            });
+
+
+
+            // display lyrics starts
+              // Get the button and the popup content
+const popupButton = document.getElementById('popupButton');
+const popupContent = document.getElementById('popupContent');
+const closeButton = document.getElementById('closeButton');
+  const downloadButton = document.getElementById('downloadLyricsButton');
+  const audioElement = document.getElementById('audio-player');
+
+  
+// Sample Lyrics (you can update this with dynamic content)
+
+
+// Show the popup and play the song when the button is clicked
+popupButton.onclick = function() {
+    popupContent.style.display = 'block';
+    // Play the song when the popup is shown
+    audioElement.play();
+}
+
+// Close the popup and stop the song when the close button is clicked
+closeButton.onclick = function() {
+    popupContent.style.display = 'none';
+    // Pause the song when the popup is closed
+    audioElement.pause();
+    audioElement.currentTime = 0; // Reset the song to the beginning
+}
+    
+    
+// Sample Lyrics (make sure this is a string and not an object or array)
+const downloadlyrics = `
+  [Verse 1]
+  First line of the song lyrics.
+  Second line of the song lyrics.
+
+  [Chorus]
+  Chorus lyrics go here.
+
+  [Verse 2]
+  More lyrics go here.
+
+  [Bridge]
+  Bridge lyrics go here.
+
+  [Outro]
+  Outro lyrics go here.
+`;
+
+// Download Lyrics functionality
+     downloadButton.onclick = function() {
+    // Create a Blob with the lyrics text content
+         if(typeof downloadlyrics === 'string'){
+    const blob = new Blob([downloadlyrics], { type: 'text/plain' });
+
+    // Create a link to trigger the download
+    const link = document.createElement('a'); // Create an anchor element
+    link.href = URL.createObjectURL(blob); // Create a temporary URL for the Blob
+    link.download = 'I am me lyrics.txt'; // Name the file for download
+
+    // Trigger the download by clicking the link
+    document.body.appendChild(link); // Append the link to the document
+    link.click(); // Trigger a click event to start the download
+    document.body.removeChild(link); // Remove the link after the download is triggered
+}
+         else{
+             alert('lyrics cant be downloaded');
+         }
+     }
+// Show the popup when the button is clicked
+popupButton.onclick = function() {
+    popupContent.style.display = 'block';
+}
+
+// Close the popup when the close button is clicked
+closeButton.onclick = function() {
+    popupContent.style.display = 'none';
+  audioElement.pause();
+  audioElement.currentTime = 0;
+}
+  
+  
+  
+  const audioPlayer = document.getElementById('audio-player');
+const lyricsContainer = document.getElementById('lyrics');
+
+// Sample lyrics with timestamps (in seconds)
+const lyrics = [
+    { time: 0, text: "yakubwe enkuddi, yanwedde enjaga... aaa" },
+    { time: 6, text: "Oba njogele ntya !" },
+    { time: 7, text: "aa.. nsekelela omuzadde e yagamba omwana we taabanga nze" },
+    { time: 10, text: " nga tamanyi kyi kyi kyendiiba" },
+    { time: 11, text: " nsekelela omukozi" },
+    { time: 12, text: "Chorus starts now" },
+    { time: 13, text: "Song continues" },
+    { time: 14, text: "And the end is near" },
+    { time: 15, text: "This is the start of the song" },
+    { time: 16, text: "First line of the lyrics" },
+    { time: 17, text: "Second line of the lyrics" },
+    { time: 18, text: "Chorus starts now" },
+    { time: 19, text: "Song continues" },
+    { time: 20, text: "And the end is near" },
+    { time: 21, text: "yakubwe enkuddi, yanwedde enjaga... aaa" },
+    { time: 22, text: "Oba njogele ntya !" },
+    { time: 23, text: "aa.. nsekelela omuzadde e yagamba omwana we taabanga nze" },
+    { time: 24, text: " nga tamanyi kyi kyi kyendiiba" },
+    { time: 25, text: " nsekelela omukozi" },
+    { time: 26, text: "Chorus starts now" },
+    { time: 27, text: "Song continues" },
+    { time: 28, text: "And the end is near" },
+    { time: 29, text: "This is the start of the song" },
+    { time: 30, text: "First line of the lyrics" },
+    { time: 31, text: "Second line of the lyrics" },
+    { time: 32, text: "Chorus starts now" },
+    { time: 33, text: "Song continues" },
+    { time: 34, text: "And the end is near" },
+    { time: 35, text: "yakubwe enkuddi, yanwedde enjaga... aaa" },
+    { time: 36, text: "Oba njogele ntya !" },
+    { time: 37, text: "aa.. nsekelela omuzadde e yagamba omwana we taabanga nze" },
+    { time: 38, text: " nga tamanyi kyi kyi kyendiiba" },
+    { time: 39, text: " nsekelela omukozi" },
+    { time: 40, text: "Chorus starts now" },
+    { time: 41, text: "Song continues" },
+    { time: 42, text: "And the end is near" },
+    { time: 43, text: "This is the start of the song" },
+    { time: 44, text: "First line of the lyrics" },
+    { time: 45, text: "Second line of the lyrics" },
+    { time: 46, text: "Chorus starts now" },
+    { time: 47, text: "Song continues" },
+    { time: 48, text: "And the end is near" },
+    { time: 49, text: "Chorus starts now" },
+    { time: 50, text: "Song continues" },
+    { time: 52, text: "And the end is near" },
+
+
+];
+
+let currentLyricIndex = -1;  // To track the currently displayed lyric
+
+// Function to load lyrics into the page
+function loadLyrics() {
+    // Clear the existing lyrics
+    lyricsContainer.innerHTML = '';
+
+    // Add each line of lyrics as a span element
+    lyrics.forEach(lyric => {
+        const lyricLine = document.createElement('span');
+        lyricLine.textContent = lyric.text;
+        lyricLine.setAttribute('data-time', lyric.time);
+        lyricsContainer.appendChild(lyricLine);
+    });
+}
+
+// Function to update active lyric based on current time of the song
+function updateLyrics() {
+    const currentTime = audioPlayer.currentTime;
+
+    // Check if the current time of the song matches the timestamp of any lyric
+    for (let i = 0; i < lyrics.length; i++) {
+if (currentTime >= lyrics[i].time) {
+            // If it's a new lyric (not the same as the last one)
+            if (i !== currentLyricIndex) {
+                const lyricLines = lyricsContainer.getElementsByTagName('span');
+
+                // Remove the 'active-lyric' class from the previous lyric
+                if (currentLyricIndex !== -1) {
+                    lyricLines[currentLyricIndex].classList.remove('active-lyric');
+                }
+
+                // Add 'active-lyric' class to the current lyric
+                lyricLines[i].classList.add('active-lyric');
+
+                // Scroll to the current active lyric
+                lyricLines[i].scrollIntoView({
+                    behavior: 'smooth', // Smooth scroll effect
+                    block: 'center' // Ensure the lyric stays centered on the screen
+                });
+
+                // Update the current lyric index
+                currentLyricIndex = i;
+            }
+        }
+    }
+}
+
+// Load the lyrics initially
+loadLyrics();
+
+// Add event listener to update lyrics as the song plays
+audioPlayer.addEventListener('timeupdate', updateLyrics);
+
+
+
+
+              </script>
+
+
+
+
+
+    <script src="/script.js"></script>
+</body>
+</html>
